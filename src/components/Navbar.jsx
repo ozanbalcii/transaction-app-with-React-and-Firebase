@@ -21,7 +21,7 @@ export default function Navbar() {
             </li>
           </>
         )}
-        {user && ( // if user is not null, then show the following:
+        {user && ( 
           <>
             <li>Hello, {user.displayName}</li>
             <li>
