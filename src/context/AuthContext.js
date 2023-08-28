@@ -12,10 +12,10 @@ export const authReducer = (state, action) => {
       return { ...state, user: null };
 
     case "AUTH_IS_READY":
-      return { ...state, user: action.payload, authIsReady: true }; //! Now inside that we set the user to be whatever user firebase sent back to us,
+      return { ...state, user: action.payload, authIsReady: true }; 
 
     default:
-      return state; //* that's if when we call this function using a dispatch, if the action type that we pass through doesn't match any of the cases we'll create later, it just defaults to this and returns the state.
+      return state; 
   }
 };
 
@@ -27,8 +27,6 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    //! this function to find out whether we're logged in or not. We fire this function where the user is either null or the user logged in.
-    //*  for every authentication change in the future, once we unsubscribe, it no longer fires
     const unsub = projectAuth.onAuthStateChanged((user) => {
       //! when this useEffect function fires, we reach out to Firebase and say, Look, give us the initial value of the user.
       dispatch({ type: "AUTH_IS_READY", payload: user });
